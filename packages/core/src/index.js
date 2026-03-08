@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import { config } from './config.js';
-import { initDb } from './db.js';
+import { initDB } from './db.js';
 
 await initDB();
 

@@ -1,0 +1,12 @@
+{
+  "name": "masterquiz",
+  "type": "module",
+  "packageManager": "yarn@4.11.0",
+  "workspaces": [
+    "packages/**"
+  ],
+  "scripts": {
+    "lint": "eslint --cache . && tsc",
+    "tsc": "tsc"
+  }
+}

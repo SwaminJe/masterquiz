@@ -10,6 +10,11 @@ services:
       MYSQL_PASSWORD: wtd_password
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   core-service:
     build:
@@ -21,11 +26,12 @@ services:
     environment:
       PORT: 3000
       MYSQL_HOST: mysql
-      MYSQL_PASSWORD: mysql
+      MYSQL_PASSWORD: wtd_password
       MYSQL_USER: wtd_user
       MYSQL_DATABASE: wtd_db
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
   utils-service:
     build:

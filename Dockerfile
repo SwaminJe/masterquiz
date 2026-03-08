@@ -4,6 +4,7 @@ RUN corepack enable
 
 COPY package.json yarn.lock ./
 COPY packages ./packages
+COPY .env .env
 
 RUN yarn install
 
